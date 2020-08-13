@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import DreamEntry from './components/DreamEntry'
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+// components
+import Navbar from './components/Navbar';
+import DreamEntry from './components/DreamEntry';
+import Home from './components/Home';
 import './App.css';
 
 
@@ -8,7 +12,17 @@ function App() {
   
   return (
   <>
-    <DreamEntry/>
+  <BrowserRouter>
+  <Navbar/>
+
+  <Switch>
+    <Route path='/' component={Home}  exact/>
+    <Route path='/DreamEntry' component={DreamEntry} />
+    <Route component={Error}  />
+
+  </Switch>
+  
+  </BrowserRouter>
   </>
   );
 }

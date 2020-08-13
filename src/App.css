@@ -41,7 +41,6 @@ body {
 button{
   display: block;
   margin: 30px auto;
-
   border: none;
   padding: 10px;
   text-align: center;
@@ -50,6 +49,23 @@ button{
   background-color: #5b3e7c;
   font-size: 1.2rem;
 }
+
+.dream-summary{
+  padding: 10px;
+  font-size: 1.5rem;
+  line-height: 35px;
+  margin: 0;
+  background-color: rgba(153, 51, 255, 0.3);
+}
+.dream-summary h5{
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.dream-summary p{
+  margin: 10px;
+}
+
 
 
 

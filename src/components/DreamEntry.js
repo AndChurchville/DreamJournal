@@ -8,24 +8,30 @@ export default function DreamEntry(props) {
     const [entry, setEntry] = useState("");
     // submit set to false initally
     const [isSubmitted, setIsSubmitted] = useState(false);
+    //get the state for checked emotions
+    const [checked, setIsChecked] = useState([]);
 
     // message displayed when isSubmitted is set to true
-    const message = <p> Title: {title} <br/> Dream: {entry}</p>;
+    const message = <><h5>{title}</h5> <p>{entry} <br/>  You felt {checked} during this dream</p></>;
 
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         console.log(`Title: ${title}, Dream: ${entry}`);
+        console.log(checked)
         // set to true when user clicks submit button
         setIsSubmitted(true);
     };
+    // const handleChecked = (e) => {
+    //     c
+    // }
     
     return (
       <>
         <div className="container">
           <h1> What did you dream about last night?</h1>
           <form>
-              {/* set title and entry on change  */}
+            {/* set title and entry on change  */}
             <input
               onChange={(e) => setTitle(e.target.value)}
               className="dream-title"
@@ -45,26 +51,29 @@ export default function DreamEntry(props) {
               cols="10"
             ></textarea>
 
-    {/* checkbox for emotions felt during dream  */} 
-            {/* <div className="dream-feelings">
+            {/* checkbox for emotions felt during dream  */}
+            <div className="dream-feelings">
               <h3> What did you feel during the dream?</h3>
 
-              <input type="checkbox" name="feeling-1" id="1" value="confused" />
+              <input type="checkbox" onChange={(e)=>setIsChecked(e.target.value)} name="feeling" id="1" value="confused" />
               <label>Confused</label>
-              <input type="checkbox" name="feeling-2" id="2" value="scared" />
+              <input type="checkbox" onChange={(e)=>setIsChecked(e.target.value)} name="feeling" id="2" value="scared" />
               <label>Scared</label>
-              <input type="checkbox" name="feeling-3" id="3" value="happy" />
+              <input type="checkbox" onChange={(e)=>setIsChecked(e.target.value)} name="feeling" id="3" value="happy" />
               <label>Happy</label>
-              <input type="checkbox" name="feeling-4" id="4" value="sad" />
+              <input type="checkbox" onChange={(e)=>setIsChecked(e.target.value)} name="feeling" id="4" value="sad" />
               <label>Sad</label>
-            </div> */}
-            <button type="submit" onClick={handleSubmit} >
+            </div>
+
+            <button type="submit" onClick={handleSubmit}>
               Submit
             </button>
           </form>
 
+          <div className='dream-summary'>
           {/* if true display message else empty string */}
-        {isSubmitted ? message : " "}
+          {isSubmitted ? message : ''}
+          </div>
         </div>
       </>
     );
