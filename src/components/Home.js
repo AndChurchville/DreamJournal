@@ -1,9 +1,44 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
+import starsky from "../assets/felix-mittermeier-unsplash.jpg";
 
 export default function Home() {
-    return (
-        <div>
-            <h1>This is the homepage</h1>
-        </div>
-    )
+  return (
+    <>
+      <HeroWrapper>
+        <HeroOverlay><h1>Dream Journal</h1></HeroOverlay>
+        <HeroImg src={starsky} />
+      </HeroWrapper>
+    </>
+  );
 }
+
+const HeroWrapper = styled.div`
+  position: relative;
+`;
+const HeroOverlay = styled.h1`
+  text-align: center;
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  
+  h1{
+    font-size: 5vw;
+    transform: translateY(-1vw); 
+    color: #ffffff;
+    letter-spacing: 0.35rem;
+  }
+  
+`;
+
+const HeroImg = styled.img`
+position: relative;
+  display: block;
+  width: 100%;
+  z-index: -1;
+  margin: auto;
+  object-fit: cover;
+  height: 30vh;
+`;
+
+

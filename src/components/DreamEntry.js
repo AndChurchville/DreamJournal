@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import EmotionsCheckbox from './EmotionsCheckbox';
 
 
 // component where the user can enter in a new dream
@@ -15,16 +16,14 @@ export default function DreamEntry(props) {
     const message = <><h5>{title}</h5> <p>{entry} <br/>  You felt {checked} during this dream</p></>;
 
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(`Title: ${title}, Dream: ${entry}`);
-        console.log(checked)
+       
         // set to true when user clicks submit button
         setIsSubmitted(true);
     };
-    // const handleChecked = (e) => {
-    //     c
-    // }
     
     return (
       <>
@@ -52,7 +51,7 @@ export default function DreamEntry(props) {
             ></textarea>
 
             {/* checkbox for emotions felt during dream  */}
-            <div className="dream-feelings">
+            {/* <div className="dream-feelings">
               <h3> What did you feel during the dream?</h3>
 
               <input type="checkbox" onChange={(e)=>setIsChecked(e.target.value)} name="feeling" id="1" value="confused" />
@@ -63,7 +62,14 @@ export default function DreamEntry(props) {
               <label>Happy</label>
               <input type="checkbox" onChange={(e)=>setIsChecked(e.target.value)} name="feeling" id="4" value="sad" />
               <label>Sad</label>
-            </div>
+
+            
+            </div> */}
+
+            {/* GOAL: Display multiple emotions in the dream-summary if checked by user.*/}
+            {/* Else display 'No feelings for this dream'  */}
+
+            <EmotionsCheckbox/>
 
             <button type="submit" onClick={handleSubmit}>
               Submit
