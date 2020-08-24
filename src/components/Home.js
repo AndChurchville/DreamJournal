@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import starsky from "../assets/felix-mittermeier-unsplash.jpg";
+import Dashboard from './Dashboard';
 
 export default function Home() {
   return (
@@ -9,6 +10,12 @@ export default function Home() {
         <HeroOverlay><h1>Dream Journal</h1></HeroOverlay>
         <HeroImg src={starsky} />
       </HeroWrapper>
+
+    <Dashboard/>
+
+
+
+
     </>
   );
 }

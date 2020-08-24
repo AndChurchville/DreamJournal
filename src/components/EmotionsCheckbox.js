@@ -1,88 +1,91 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
-import DreamEntry from './DreamEntry';
 
 
-//EmotionsCheckbox.js Trying to separate checkbox UI into its own component
-
-//Setting up a inital object for each emotion. 
-const Emotion = ({type = 'checkbox', name, checked = false, onChange}) => {
-  return(
-    <input type={type} name={name} checked={checked} onChange={onChange} />
-  );
-};
-
-
-
-export default function EmotionsCheckbox() {
-    const [isChecked, setIsChecked] = useState({});
-    
-// Above: state to track what emotion is checked. Below: what to do when emotion is checked
-    const handleCheck = (e) => {
-        setIsChecked({...isChecked,[e.target.name]:e.target.checked});
-        console.log('Emotions: ', isChecked);
-    }
-
-    // List of emotions as objects
-  const emotions = [
-  { name: "Happy", key: "Happy", label: "Happy" },
-  { name: "Sad", key: "Sad", label: "Sad" },
-  { name: "Confused", key: "Confused", label: "Confused" },
-  { name: "Scared", key: "Scared", label: "Scared" },
+const emotions = [
+  'Happy',
+  'Sad',
+  'Confused',
+  'Scared'
 ];
 
-// TODO: Figure out a way to pass the checked emotions to display in  dream summary in DreamEntry Component
-    return (
-      <div className="dream-feelings">
-        <h3> What did you feel during the dream?</h3>
+//Map the list of emotions in getDefaultFeelings function
+//creates inital state object array and gets intialized when EmotionsCheckbox calls useCheckboxes hook.
+const getDefaultFeelings = () => 
+emotions.map(checkbox => ({
+  name: checkbox,
+  checked: false,
+}));
 
-{/* Map through the emotions array of objects and showcase each item */}
-        {emotions.map((item) => (
-          <label key={item.key}>
-            <Emotion
-              name={item.name}
-              checked={isChecked[item.name]}
-              onChange={handleCheck}
-            />
-            {item.name}
-          </label>
-        ))}
-      </div>
+export function useCheckboxes(defaultFeelings) {
+  const [checkboxes, setCheckboxes] = useState(
+    defaultFeelings || getDefaultFeelings()
+  );
 
-      // {/* <input
-      //   type="checkbox"
-      //   onChange={(e) => setIsChecked(e.target.value)}
-      //   name="feeling"
-      //   id="1"
-      //   value="confused"
-      // />
-      // <label>Confused</label>
+  function setCheckbox(index, checked) {
+    //spread operator creates a copy of the current checkboxes/emotion list
+    //sets the checked property of the passed index
+    //new array set with setCheckboxes
+    const newFeelings = [...checkboxes];
+    newFeelings[index].checked = checked;
+    setCheckboxes(newFeelings);
+  }
 
-      // <input
-      //   type="checkbox"
-      //   onChange={(e) => setIsChecked(e.target.value)}
-      //   name="feeling"
-      //   id="2"
-      //   value="scared"
-      // />
-      // <label>Scared</label>
+  //have the checkboxes hook return list of checkboxes and callback setCheckbox
 
-      // <input
-      //   type="checkbox"
-      //   onChange={(e) => setIsChecked(e.target.value)}
-      //   name="feeling"
-      //   id="3"
-      //   value="happy"
-      // />
-      // <label>Happy</label>
-
-      // <input
-      //   type="checkbox"
-      //   onChange={(e) => setIsChecked(e.target.value)}
-      //   name="feeling"
-      //   id="4"
-      //   value="sad"
-      // />
-      // <label>Sad</label> */}
-    );
+  return {
+    setCheckbox,
+    checkboxes,
+  };
 }
+
+const Checkbox = styled.input`
+margin: 0px 10px 0px !important;
+cursor: pointer;
+`;
+
+
+
+//onchange handler is fired and calls the hook to update list of checkboxes
+export function Checkboxes({ checkboxes, setCheckbox}) {
+  return(
+    <>
+    {checkboxes.map((checkbox, i) => {
+      return (
+        <label key = {checkbox.name}>
+          <Checkbox
+            type="checkbox"
+            checked={checkbox.checked}
+            onChange={e => {
+              setCheckbox(i, e.target.checked);
+            } } />
+          {checkbox.name}
+        </label>
+      );
+    })}
+    </>
+  )
+}
+
+export default function EmotionsCheckbox(emotions) {
+  const checkboxes = useCheckboxes();
+  return(<>
+    <div onChange = {e => emotions.onChange(
+      checkboxes.checkboxes
+        .filter(t => t.checked)
+        .map(checkbox => checkbox.name)
+        .join(', ')
+        .toLowerCase())
+        }>
+       <h3> What did you feel during the dream?</h3>
+      <Checkboxes {...checkboxes} />
+      <br/>
+
+    </div>
+    </>
+  );
+
+  
+}
+
+
