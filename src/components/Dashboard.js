@@ -1,10 +1,12 @@
 import React from 'react';
+import DreamEntry from './DreamEntry';
+
 
 
 export default function Dashboard() {
     return (
-        <div>
-            <h3>List of dream entries</h3>
-        </div>
-    )
+        <>
+
+      </>
+    );
 }

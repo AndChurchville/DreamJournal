@@ -1,5 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import EmotionsCheckbox from './EmotionsCheckbox';
+import firebase from '../firebase'
+
+
 
 
 // component where the user can enter in a new dream
@@ -12,6 +16,21 @@ export default function DreamEntry(props) {
     //get the state for checked emotions
     const [checked, setIsChecked] = useState('no emotions');
 
+  //trying to connect firebase to dream data
+    // useEffect(() => {
+    //   firebase.firestore().collection('dreams').onSnapshot((snapshot) => {
+    //     const newEntry = snapshot.docs.map((doc) => ({
+    //       id: doc.id,
+    //       ...doc.data()
+    //     }))
+
+    //     setTitle(newEntry)
+     
+    //     }
+    //   )
+    // }, []);
+
+
     // message displayed when isSubmitted is set to true
     const message = <><h5>{title}</h5> <p>{entry} <br/>  You felt {checked} during this dream</p></>;
 
@@ -22,10 +41,18 @@ export default function DreamEntry(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const db = firebase.firestore();
+        db.settings({
+          timestampsInSnapshots: true
+        });
+        const entryRef = db.collection("dreams").add({
+          title: title,
+          entry: entry
+        })
+      
         console.log(`Title: ${title}, Dream: ${entry}, Emotions: ${checked}`);
          // set to true when user clicks submit button
         setIsSubmitted(true);
-        
     };
     
     return (
@@ -40,6 +67,7 @@ export default function DreamEntry(props) {
               type="text"
               name="title"
               placeholder="Give your dream a title"
+              value={title}
             />
 
             {/* User dream entry */}
@@ -51,12 +79,15 @@ export default function DreamEntry(props) {
               placeholder="What did you dream about?"
               rows="5"
               cols="10"
+              value={entry}
             ></textarea>
 
             <EmotionsCheckbox onChange={handleChange}/>
 
             <button type="submit">
-              Submit
+              {/* <Link to='/Dashboard'> */}
+                Submit
+                {/* </Link> */}
             </button>
           </form>
 
