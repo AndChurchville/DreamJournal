@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 
+//Checkbox form for the emotions
+
 
 const emotions = [
   'Happy',
