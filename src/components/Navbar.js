@@ -1,3 +1,4 @@
+import firebase from '../firebase';
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -11,6 +12,9 @@ export default function Navbar() {
         </li>
         <li>
           <Link to="/dreamentry">Enter a Dream</Link>
+        </li>
+        <li>
+          <Link to='/login' onClick={() => firebase.auth().signOut()}>Sign out</Link>
         </li>
       </Nav>
     </NavWrapper>

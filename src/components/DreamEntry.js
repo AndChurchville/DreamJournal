@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import React, {useState} from 'react';
+// import {Link, Redirect} from 'react-router-dom';
 import EmotionsCheckbox from './EmotionsCheckbox';
 import firebase from '../firebase'
 
