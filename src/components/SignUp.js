@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import firebase from '../firebase';
 
 export default function SignUp({history}) {
@@ -20,14 +20,17 @@ export default function SignUp({history}) {
             <form onSubmit={handleRegister}>
                 <label>
                     Email
-                    <input name='email' type='email' placeholder='Email' />
+                    <input name='email' type='email' />
                 </label>
                 <label>
                     Password
-                    <input name='password' type='password' placeholder='Password' />
+                    <input name='password' type='password' />
                 </label>
                 <button type='submit'>Sign Up</button>
             </form>
+
+            <h4>Already have a login? <Link to='/Login'>
+        <span>Log In</span></Link></h4>
         </div>
     )
 }

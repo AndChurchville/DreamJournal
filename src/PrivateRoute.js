@@ -7,6 +7,7 @@ import {AuthContext} from './Auth';
 export default function PrivateRoute({component: RouteComponent, ...rest }) {
     const {currentUser} = useContext(AuthContext);
     return (
+        <>
         <Route
         {...rest}
         render={routeProps => !!currentUser ? (
@@ -15,6 +16,6 @@ export default function PrivateRoute({component: RouteComponent, ...rest }) {
             <Redirect to={'/Login'} />
         )}
          />
-
+</>
     );
 };

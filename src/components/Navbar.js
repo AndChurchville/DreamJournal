@@ -6,6 +6,7 @@ import styled from "styled-components";
 export default function Navbar() {
   return (
     <NavWrapper>
+      <Wordmark>Dream Journal</Wordmark>
       <Nav>
         <li>
           <Link to="/">Dashboard</Link>
@@ -13,9 +14,9 @@ export default function Navbar() {
         <li>
           <Link to="/dreamentry">Enter a Dream</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to='/login' onClick={() => firebase.auth().signOut()}>Sign out</Link>
-        </li>
+        </li> */}
       </Nav>
     </NavWrapper>
   );
@@ -25,6 +26,9 @@ const NavWrapper = styled.div`
 background-color: rgba(153, 51, 255);
   display: flex;
   justify-content: space-around;
+`;
+const Wordmark = styled.h1`
+color: white;
 `;
 const Nav = styled.ul`
 list-style: none;

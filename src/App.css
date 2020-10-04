@@ -1,4 +1,4 @@
-html{
+*, html{
   box-sizing: border-box;
 }
 
@@ -50,21 +50,6 @@ button{
   font-size: 1.2rem;
 }
 
-.dream-summary{
-  padding: 10px;
-  font-size: 1.5rem;
-  line-height: 35px;
-  margin: 0;
-  
-}
-.dream-summary h5{
-  margin: 0;
-  font-weight: bold;
-  font-size: 2rem;
-}
-.dream-summary p{
-  margin: 10px;
-}
 
 
 

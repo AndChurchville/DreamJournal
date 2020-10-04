@@ -7,18 +7,23 @@ export default function Home() {
   return (
     <>
       <HeroWrapper>
-        <HeroOverlay><h1>Dream Journal</h1></HeroOverlay>
+        <HeroOverlay>
+          <h1>Dream Journal</h1>
+        </HeroOverlay>
         <HeroImg src={starsky} />
       </HeroWrapper>
 
-    <Dashboard/>
-
-
-
-
+      <Container>
+        <Dashboard />
+      </Container>
     </>
   );
 }
+
+const Container = styled.div` 
+display: grid;
+grid-template-columns: repeat(4, auto);
+`;
 
 const HeroWrapper = styled.div`
   position: relative;
@@ -45,7 +50,7 @@ position: relative;
   z-index: -1;
   margin: auto;
   object-fit: cover;
-  height: 30vh;
+  height: 20vh;
 `;
 
 

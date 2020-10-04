@@ -12,8 +12,8 @@ export default function DreamEntry(props) {
   // useState to keep user input
   const [title, setTitle] = useState("");
   const [entry, setEntry] = useState("");
-  // submit set to false initally
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // // submit set to false initally
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   //get the state for checked emotions
   const [checked, setIsChecked] = useState("no emotions");
 
@@ -52,11 +52,6 @@ export default function DreamEntry(props) {
     clearField();
     window.location.replace('/')
 
-  
-    // console.log(`Title: ${title}, Dream: ${entry}, Emotions: ${checked}`);
-    // // set to true when user clicks submit button
-    // setIsSubmitted(true);
-
   };
   
 
@@ -94,10 +89,6 @@ export default function DreamEntry(props) {
           {/* </Link> */}
         </form>
 
-        <div className="dream-summary">
-          {/* if true display message else empty string */}
-          {isSubmitted ? message : null}
-        </div>
       </div>
     </>
   );
