@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import firebase from '../firebase';
 
 export default function SignUp({history}) {

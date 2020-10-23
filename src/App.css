@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@500;600&display=swap');
+
 *, html{
   box-sizing: border-box;
 }
@@ -9,16 +11,6 @@ body {
  
 }
 
-.container{
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 800px;
-  text-align: center;
-  padding: 30px;
-  background-color: #272730;
-  color: white;
-}
 .dream-title{
   width: 500px;
   padding: 5px;
@@ -28,15 +20,7 @@ body {
   width: 500px;
   padding: 5px;
 }
-.dream-feelings{
-  text-align: center;
-}
-.dream-feelings input{
-  margin: 0px;
-}
-.dream-feelings label{
-  margin: 0px 20px 0px 3px;
-}
+
 
 button{
   display: block;

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react'
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import firebase from '../firebase';
 import { AuthContext } from '../Auth';
 import styled from "styled-components";
@@ -24,9 +24,18 @@ export default function Login({ history }) {
     return <Redirect to='/' />;
   }
 
+  const handleAnon = (e) => {
+    firebase.auth().signInAnonymously();
+  }
+
   return (
     <Container>
       <h1>Login</h1>
+      
+      <AnonBtn onClick={handleAnon}>
+          Sign In Anonymously
+        </AnonBtn>
+
       <LoginForm onSubmit={handleLogin}>
         <label>Email
           <input name='email' type='email' />
@@ -36,7 +45,9 @@ export default function Login({ history }) {
         </label>
         <button type='submit'>Log In</button>
       </LoginForm>
-
+      
+        
+     
       <h4>Don't have a login? <Link to='/SignUp'>
         <span>Sign Up</span></Link></h4>
     </Container>
@@ -64,4 +75,13 @@ const LoginForm = styled.form`
     
 
   }
+`;
+
+
+const AnonBtn = styled.button`
+cursor: pointer;
+&:hover {
+  background-color: #815bad;
+}
+
 `;

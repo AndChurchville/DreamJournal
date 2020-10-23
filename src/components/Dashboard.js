@@ -9,18 +9,20 @@ export default function Dashboard() {
     const [ dreams, setDreams] = useState([])
   
     useEffect(() => {
-      firebase
-        .firestore()
+      let isSubbed = true;
+      firebase.firestore()
         .collection("dreams")
+        .orderBy('timestamp', 'desc')
         .onSnapshot(snapshot => {
           const entries = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
           }))
-  
-          setDreams(entries)
+          if (isSubbed){
+            setDreams(entries)
+          }
         });
-        
+        return () => isSubbed = false
     }, []
     )
 
@@ -30,15 +32,15 @@ export default function Dashboard() {
         <>
         {dreams.map(dream => {
           return (
-             <>
+             <div key={dream.id}>
             {/* <ListContainer> */}
-              <EntryCard>
+              <EntryCard> 
                 <h1>{dream.title}</h1>
                 <p>{dream.entry}</p>
                 <p> <strong>Feelings: </strong> {dream.feelings}</p>
               </EntryCard>
               {/* </ListContainer> */}
-            </>
+            </div>
           );
         })}
        
@@ -52,11 +54,16 @@ export default function Dashboard() {
 // flex-wrap: wrap;
 // `;
       const EntryCard = styled.div`
-      background-color: gray;
+       h1{
+         line-height: 45px;
+       }
+      background-color: #272730;
       color: white;
-      border-radius: 15px;
+      border-radius: 10px;
       text-align: center;
-      width: 300px;
-      margin: 20px auto;
-      padding: 10px;
+      font-family: 'Poppins', sans-serif;
+      width: 350px;
+      margin: 50px auto;
+      padding: 20px;
+      line-height: 25px;
       `;
