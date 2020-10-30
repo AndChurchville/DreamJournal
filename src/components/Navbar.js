@@ -1,28 +1,18 @@
 import React from "react";
-import firebase from 'firebase';
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import starsky from "../assets/felix-mittermeier-unsplash.jpg";
 
+import NavLinks from './NavLinks';
+import MenuBars from './MenuBars';
 
 
 export default function Navbar() {
 
   return (
     <NavWrapper>
-      <Wordmark>Dream Journal</Wordmark>
-      <Nav>
-        <li>
-          <Link to="/">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/dreamentry">Enter a Dream</Link>
-        </li>
-
-        <li>
-          <Link to='/login' onClick={() => firebase.auth().signOut()}>Logout</Link>
-        </li>
-      </Nav>
+      <Wordmark Link to="/">Dream Journal</Wordmark>
+      <MenuBars />
+      {/* <NavLinks/> */}
     </NavWrapper>
   );
 }
@@ -38,29 +28,31 @@ const NavWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 2%;
+height: 75px;
+padding: 5%;
+
+  .icon{
+    color: white;
+    font-size: 1.5rem;
+    display:none;
+  }
+
+ 
 `;
 
 const Wordmark = styled.h1`
 color: white;
 font-family: 'Caveat Brush', sans-serif;
-font-size: 4rem;
-`;
+font-size: 5rem;
+padding: 15px 0;
 
-const Nav = styled.ul`
-list-style: none;
-display: flex;
-
-li{
-justify-content: space-around;
-margin-left: 20px;
+@media (max-width: 1200px){
+  font-size: 3rem;
+  letter-spacing: 2px;
 }
-
-
-a{
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    font-size: 1.5rem;
+@media (max-width: 992px){
+  font-size: 2rem;
 }
 `;
+
+

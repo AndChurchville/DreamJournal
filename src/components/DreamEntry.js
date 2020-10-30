@@ -97,10 +97,30 @@ const EntryContainer = styled.div`
   text-align: center;
   border-radius: 10px;
   padding: 30px;
-  background-color: #272730;
+  background-color: #392757;
   color: white;
   font-family: 'Poppins', sans-serif;
   text-transform: capitalize;
+
+  @media (max-width: 1199.98px){
+    width: 500px;
+
+    .dream-title, .dream-text{
+      width: 350px;
+    }
+  }
+
+  @media (max-width: 991.98px){
+    width: 300px;
+
+    h1{
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+    .dream-title, .dream-text{
+      width: 250px;
+    }
+  }
 `;
 
 

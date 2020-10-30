@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@500;600&display=swap');
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 *, html{
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
 
-body {
+html, body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   line-height: 1;
- 
+  overflow-x: hidden;
 }
 
 .dream-title{
