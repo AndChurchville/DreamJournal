@@ -2,4 +2,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Dream Journal
 
-My growing attempt to make a dream journal with made with React and a firebase backend
+My growing attempt to make a dream journal with React and Firebase backend
