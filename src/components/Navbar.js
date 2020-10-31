@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import starsky from "../assets/felix-mittermeier-unsplash.jpg";
-
-import NavLinks from './NavLinks';
 import MenuBars from './MenuBars';
 
 
@@ -12,7 +10,7 @@ export default function Navbar() {
     <NavWrapper>
       <Wordmark Link to="/">Dream Journal</Wordmark>
       <MenuBars />
-      {/* <NavLinks/> */}
+   
     </NavWrapper>
   );
 }

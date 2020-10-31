@@ -55,7 +55,7 @@ const Nav = styled.ul`
 
   @media (max-width: 768px){
     flex-flow: column nowrap;
-    background-color: pink;
+    background-color: purple;
     position: fixed;
     transform: ${({open}) => open ? 'translateX(0)' :  'translateX(100%)'};
     top: 0;

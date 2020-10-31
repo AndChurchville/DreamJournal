@@ -41,12 +41,6 @@ export function useCheckboxes(defaultFeelings) {
   };
 }
 
-const Checkbox = styled.input`
-margin: 0px 10px 0px !important;
-cursor: pointer;
-`;
-
-
 
 //onchange handler is fired and calls the hook to update list of checkboxes
 export function Checkboxes({ checkboxes, setCheckbox}) {
@@ -54,13 +48,14 @@ export function Checkboxes({ checkboxes, setCheckbox}) {
     <>
     {checkboxes.map((checkbox, i) => {
       return (
-        <label key = {checkbox.name}>
+        <label key = {checkbox.name} className='emo-title'>
           <Checkbox
             type="checkbox"
             checked={checkbox.checked}
             onChange={e => {
               setCheckbox(i, e.target.checked);
-            } } />
+            } }
+             />
           {checkbox.name}
         </label>
       );
@@ -89,5 +84,14 @@ export default function EmotionsCheckbox(emotions) {
 
   
 }
+
+
+const Checkbox = styled.input`
+margin: 0px 10px 0px !important;
+cursor: pointer;
+
+@media( max-width: 800px){
+white-space: no-wrap;
+`;
 
 

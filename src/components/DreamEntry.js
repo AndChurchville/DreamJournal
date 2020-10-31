@@ -54,7 +54,7 @@ const history = useHistory();
   return (
     <>
       <EntryContainer>
-        <h1> What did you dream about last night?</h1>
+        <h1> What did you dream about?</h1>
         <form onSubmit={handleSubmit}>
           {/* set title and entry on change  */}
           <input
@@ -72,7 +72,7 @@ const history = useHistory();
             className="dream-text"
             type="text"
             name="entry"
-            placeholder="What did you dream about?"
+            placeholder="I dreamt that..."
             rows="5"
             cols="10"
             value={entry}
@@ -102,8 +102,27 @@ const EntryContainer = styled.div`
   font-family: 'Poppins', sans-serif;
   text-transform: capitalize;
 
-  @media (max-width: 1199.98px){
+  .dream-title{
     width: 500px;
+    padding: 5px;
+  }
+  .dream-text{
+    margin-top: 2%;
+    width: 500px;
+    padding: 5px;
+  }
+
+  .emo-title{
+    white-space: nowrap;
+
+    @media (max-width: 424.99px){
+      display: flex;
+      padding-top: 5px;
+    }
+  }
+
+  @media (max-width: 1199.98px){
+    width: 600px;
 
     .dream-title, .dream-text{
       width: 350px;
@@ -111,11 +130,11 @@ const EntryContainer = styled.div`
   }
 
   @media (max-width: 991.98px){
-    width: 300px;
+    width: 350px;
 
     h1{
-      font-size: 1rem;
-      line-height: 1.5rem;
+      font-size: 1.5rem;
+      line-height: 2rem;
     }
     .dream-title, .dream-text{
       width: 250px;
