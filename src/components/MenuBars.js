@@ -6,6 +6,7 @@ import NavLinks from './NavLinks';
 
 export default function MenuBars() {
     const [open, setOpen] = useState(false);
+
     var menuIcon;
     if (open) {
       menuIcon = <FontAwesomeIcon icon={faTimes} />
@@ -14,17 +15,17 @@ export default function MenuBars() {
     }
 
     return (
-        <>
-     <Menu open={open} onClick={() =>setOpen(!open)}>
-         {menuIcon}
-     </Menu>
-     <NavLinks open={open}/>
-     </>
-    )
+      <>
+        <Menu open={open} onClick={() => setOpen(!open)}>
+          {menuIcon}
+        </Menu>
+        <NavLinks open={open} />
+      </>
+    );
 }
 
 const Menu = styled.div `
-color: ${({ open }) => open ? 'red' : 'white'};
+color: ${({ open }) => open ? '#392757' : 'white'};
 font-size: 2rem;
 cursor: pointer;
 z-index: 20;

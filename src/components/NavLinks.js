@@ -53,22 +53,24 @@ const Nav = styled.ul`
     font-size: 1.5rem;
   }
 
+//Nav Sidebar
+
   @media (max-width: 768px){
     flex-flow: column nowrap;
-    background-color: purple;
+    background-color: #837896;
     position: fixed;
     transform: ${({open}) => open ? 'translateX(0)' :  'translateX(100%)'};
     top: 0;
     right: 0;
     height: 100vh;
-    width: 300px;
+    width: 200px;
     margin: 0;
-    padding: 10px 0; 
+    padding: 50px 0; 
     
   li {
     justify-content: space-around;
     &:hover {
-      background-color: rgba(157, 117, 178, 0.5);
+      background-color: rgba(206, 201, 213, 0.5);
     }
   }
 `;

@@ -57,7 +57,7 @@ export default function Dashboard() {
        h1{
          line-height: 45px;
        }
-      background-color: #392757;
+      background-color: var(--color-primary);
       color: white;
       border-radius: 10px;
       text-align: center;

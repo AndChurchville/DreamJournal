@@ -97,7 +97,7 @@ const EntryContainer = styled.div`
   text-align: center;
   border-radius: 10px;
   padding: 30px;
-  background-color: #392757;
+  background-color: var(--color-primary);
   color: white;
   font-family: 'Poppins', sans-serif;
   text-transform: capitalize;

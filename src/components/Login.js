@@ -32,9 +32,9 @@ export default function Login({ history }) {
     <Container>
       <h1>Login</h1>
       
-      <AnonBtn onClick={handleAnon}>
+      <button onClick={handleAnon}>
           Sign In Anonymously
-        </AnonBtn>
+        </button>
 
       <LoginForm onSubmit={handleLogin}>
         <label>Email
@@ -49,7 +49,7 @@ export default function Login({ history }) {
         
      
       <h4>Don't have a login? <Link to='/SignUp'>
-        <span>Sign Up</span></Link></h4>
+        <span className='little-link'> Sign Up</span></Link></h4>
     </Container>
   )
 }
@@ -60,7 +60,7 @@ flex-direction: column;
 margin: 50px auto;
 width: 500px;
 padding: 30px;
-background-color: #272730;
+background-color: var(--color-primary);
 color: white;
 border-radius: 15px;
 `;
@@ -78,10 +78,3 @@ const LoginForm = styled.form`
 `;
 
 
-const AnonBtn = styled.button`
-cursor: pointer;
-&:hover {
-  background-color: #815bad;
-}
-
-`;
