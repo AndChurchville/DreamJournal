@@ -37,7 +37,7 @@ const history = useHistory();
       title: title,
       entry: entry,
       feelings: checked,
-      timestamp: firebase.firestore.Timestamp.now(),
+      timestamp: firebase.firestore.Timestamp.now()
     })
     .then(() => {
       console.log('Success!');

@@ -4,13 +4,13 @@ import firebase from '../firebase';
 import styled from 'styled-components';
 
 export default function SignUp({history}) {
-    const db = firebase.firestore();
     const handleRegister = useCallback(async event => {
         event.preventDefault();
         const {email, password } = event.target.elements;
         try {
             await firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then(info => {
-                return db.collection('users').doc(info.user.uid).set({
+                return firebase.firestore().collection('users').doc(info.user.uid).set({
+                    uid: info.user.uid,
                     username: email.value
                 })
             });

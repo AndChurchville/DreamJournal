@@ -63,6 +63,14 @@ padding: 30px;
 background-color: var(--color-primary);
 color: white;
 border-radius: 15px;
+
+.little-link{
+    color:#837896;
+    &:hover{
+        color:white;
+    }
+    text-decoration: none;
+}
 `;
 
 const LoginForm = styled.form`
@@ -75,6 +83,7 @@ const LoginForm = styled.form`
     
 
   }
+  
 `;
 
 
