@@ -38,6 +38,7 @@ export default function Dashboard() {
                 <h1>{dream.title}</h1>
                 <p>{dream.entry}</p>
                 <p> <strong>Feelings: </strong> {dream.feelings}</p>
+                <p><strong>Created By: </strong> {dream.userName}</p>
               </EntryCard>
               {/* </ListContainer> */}
             </div>

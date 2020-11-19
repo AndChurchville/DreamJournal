@@ -31,13 +31,17 @@ const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    //connecting user to dream
+    const userId = firebase.auth().currentUser.uid;
+    const userName = firebase.auth().currentUser.email;
     //trying to send dream data to FB database
       firebase.firestore().collection("dreams").add({
       title: title,
       entry: entry,
       feelings: checked,
-      timestamp: firebase.firestore.Timestamp.now()
+      timestamp: firebase.firestore.Timestamp.now(),
+      userId: userId,
+      userName: userName
     })
     .then(() => {
       console.log('Success!');
