@@ -40,7 +40,7 @@ padding: 5%;
 
 const Wordmark = styled.h1`
 color: white;
-font-family: 'Caveat Brush', sans-serif;
+font-family: var(--display-text);
 font-size: 5rem;
 padding: 15px 0;
 

@@ -65,7 +65,7 @@ color: white;
 border-radius: 15px;
 
 .little-link{
-    color:#837896;
+    color:var(--color-light);
     &:hover{
         color:white;
     }

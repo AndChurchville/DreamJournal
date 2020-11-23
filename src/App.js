@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import './App.css';
+import Footer from './components/Footer';
 import { AuthProvider } from './Auth';
 import PrivateRoute from './PrivateRoute'
 
@@ -25,6 +26,7 @@ function App() {
             <PrivateRoute path="/DreamEntry" component={DreamEntry} />
             <Route component={Error} />
           </Switch>
+          <Footer/>
         </BrowserRouter>
       </AuthProvider>
     </>

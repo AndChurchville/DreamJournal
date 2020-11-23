@@ -49,12 +49,12 @@ flex-direction: column;
 margin: 50px auto;
 width: 500px;
 padding: 30px;
-background-color: #292730;
+background-color: var(--color-primary);
 color: white;
 border-radius: 15px;
 
 .little-link{
-    color:#837896;
+    color: var(--color-light);
     &:hover{
         color:white;
     }

@@ -8,7 +8,10 @@
   --color-btn:#6e4c96;
   --color-btn-hover:#9a73c7;
   --color-light:  #cec9D5;
-  /* sizes */
+  --delete-btn:#e4473c;
+  /* fonts */
+  --body-text: 'Poppins', sans-serif;
+  --display-text: 'Caveat Brush', sans-serif;
   
 }
 

@@ -32,16 +32,23 @@ const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     //connecting user to dream
-    const userId = firebase.auth().currentUser.uid;
-    const userName = firebase.auth().currentUser.email;
+    const user = firebase.auth().currentUser;
+    const nameUser = () =>{
+      if (user.email) {
+        return user.email
+      } if (user.isAnonymous) {
+        return 'Anonymous'
+      }
+    }
+    
     //trying to send dream data to FB database
       firebase.firestore().collection("dreams").add({
       title: title,
       entry: entry,
       feelings: checked,
       timestamp: firebase.firestore.Timestamp.now(),
-      userId: userId,
-      userName: userName
+      userId: user.uid,
+      userName: nameUser(),
     })
     .then(() => {
       console.log('Success!');
