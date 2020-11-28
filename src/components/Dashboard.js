@@ -9,12 +9,12 @@ import {faTimes} from '@fortawesome/free-solid-svg-icons';
 export default function Dashboard() {
 
     const [ dreams, setDreams] = useState([])
-  
-    useEffect(() => {
+   
+    useEffect(() => { 
+      const db = firebase.firestore();
       let isSubbed = true;
-      firebase.firestore()
-        .collection("dreams")
-        .orderBy('timestamp', 'desc')
+      db.collection("dreams")
+        .where('userId', '!=', 'null')
         .onSnapshot(snapshot => {
           const entries = snapshot.docs.map((doc) => ({
             id: doc.id,
@@ -29,11 +29,12 @@ export default function Dashboard() {
     )
 
 // function for deleting a dream entry
+// TODO: Find a better way to only have user delete own dreams
       const DreamDelete = (e) => {
         firebase.firestore().collection("dreams").doc(e).delete().then(
               console.log("Dream Successfully Deleted!")
           ).catch(function(error){
-            console.log('error deleting dream: ', error)
+            alert('You can\'t delete other user\'s dreams');
           });
       };
 
@@ -44,9 +45,9 @@ export default function Dashboard() {
         {dreams.map(dream => {
           return (
              <div key={dream.id}>
-           
               <EntryCard> 
                 {/* button to delete dream */}
+                {/* find better way to only display button on current user dream */}
                <button className='delete-dream' 
                onClick={(e)=>DreamDelete(dream.id)}
                >

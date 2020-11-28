@@ -32,7 +32,8 @@ const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     //connecting user to dream
-    const user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser
+   
     const nameUser = () =>{
       if (user.email) {
         return user.email
@@ -48,9 +49,8 @@ const history = useHistory();
       feelings: checked,
       timestamp: firebase.firestore.Timestamp.now(),
       userId: user.uid,
-      userName: nameUser(),
-    })
-    .then(() => {
+      userName: nameUser()
+    }).then(() => {
       console.log('Success!');
       clearField();
       history.push('/')

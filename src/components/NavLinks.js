@@ -19,7 +19,7 @@ export default function NavLinks({open}) {
               Logout
             </Link>
           </li>
-        )}
+        )} 
        <li className='icon'>
          <FontAwesomeIcon icon={faBars} />
        </li>

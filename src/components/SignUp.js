@@ -10,7 +10,7 @@ export default function SignUp({history}) {
         try {
             await firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then(info => {
                 return firebase.firestore().collection('users').doc(info.user.uid).set({
-                    uid: info.user.uid,
+                    userId: info.user.uid,
                     username: email.value
                 })
             });
